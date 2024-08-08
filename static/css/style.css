@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Radio Canada Big', sans-serif;
+    transition: all 200ms;
+}
+
+body {
+    width: 100vw;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #030f3f;
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: #030f3f;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0px;
+    border-radius: 10px;
+}
+
+.title {
+    width: 490px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #061552;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#send,
+#adicionarCampo {
+    border-style: none;
+    width: 200px;
+    height: 40px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+#send:hover {
+    background-color: #0071eb;
+}
+
+#adicionarCampo {
+    background-color: #ff7b00;
+}
+
+#adicionarCampo:hover {
+    background-color: #da6900;
+}
+
+.input {
+    height: 40px;
+    padding: 5px;
+    font-size: larger;
+    background: transparent;
+    border-style: none;
+    border-bottom: 1px solid #35f5ff;
+    color: white;
+    background-color: #061552;
+}
+
+#excelFile{
+    display: none;
+}
+
+.import{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#importExcel{
+    width: 90%;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #28a745;
+    color: white;
+    font-size: larger;
+    font-weight: 600;
+    cursor: pointer;
+    border-style: none;
+}
+
+#importExcel:hover{
+    background-color: #218f3a;
+}
+
+.inputs-hora>input {
+    width: 80px;
+}
+
+.campo {
+    width: 490px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #061552;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+#mensagem {
+    min-width: 450px;
+    width: 100%;
+    height: 110px;
+    padding: 10px;
+    font-size: medium;
+}
+
+.btns {
+    width: 490px;
+    background-color: #061552;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.btns-send-add {
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon>i {
+    cursor: pointer;
+}
+
+.icon>i:hover {
+    color: #007BFF;
+}
+
+#info:hover{
+    scale: 1.2;
+}
+
+/*MODAL--------------------------------------------------------*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    animation: modalScale 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
+    /* Adiciona um desfoque de 5px ao fundo */
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 3% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    color: #030f3f;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-content>span {
+    text-align: end;
+}
+
+.modal-text-area {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#titleImg:hover{
+    scale: 1.1;
+}
+
+@keyframes modalScale {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.185);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-gif {
+    width: 100px;
+    height: 100px;
+}
+
+/*MODAL--------------------------------------------------------*/
+
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.campo-animated {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.removing {
+    animation: slideOut 0.5s ease-in-out;
+}
+
+
+@media screen and (max-width: 720px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 70%;
+    }
+}
