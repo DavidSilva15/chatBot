@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Mensagens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="../static/img/estudos.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!--HTML referente ao modal que exibe a mensagem com informações importantes sobre o app-->
+    <!--<div class="modal" id="myModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-info">
+                <div class="modal-title">
+                    <h3 style="color: red;">IMPORTANTE!</h3>
+                </div>
+                <div class="modal-text-area">
+                    <p>O chatBot está em fase de desenvolvimento, por tanto, pode apresentar inconscistências como:</p>
+                    <ul style="margin-left: 40px;">
+                        <li> <strong><em>Fechar o navegador antes de enviar a mensagem</em></strong></li>
+                        <li> <strong><em>Não encontrar o número whatsapp</em></strong></li>
+                        <li> <strong><em>Não carregar a conversa a tempo do envio da mensagem</em></strong></li>
+                    </ul>
+                    <hr>
+                    <label for="modalimg1">Por padrão, o campo de número de whatsapp já vem com o código do país (+55),
+                        o DDD (71) e o 9 inseridos. Para cada número adicionado, o valor do minuto é acrescentado o
+                        valor anterior +1</label>
+                    <div class="modal-text-area-img" style="width: 100%; text-align: center;">
+                        <img id="modalimg1" src="../static/img/modalimg1.png" alt="" width="300px">
+                    </div>
+                    <hr>
+                    <p>Caso queira enviar mensagens em um horário fora do padrão definido (19h), é importante destacar
+                        que o envio das mensagens acontece <strong>1min</strong> antes do previsto, ou seja, o chatBot
+                        vai abrir o <strong>Whatsapp Web</strong> <strong>1min</strong> antes de enviar a mensagem</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <!--Container principal onde fica todo conteúdo utilizavel do app-->
+    <div class="container">
+        <!--Título com a logo-->
+        <div class="title">
+            <img id="titleImg" src="../static/img/logo.png" alt="" width="50px">
+            <h1>Mensagem de faltosos</h1>
+        </div>
+
+        <!--Formulário com os inputs que se comunicam com o código python-->
+        <form action="/enviar" method="POST" id="form">
+            <div id="campos">
+                <div class="campo">
+                    
+                    <!--Input do campo número de Whatsapp-->
+                    <div class="number">
+                        <label for="numero">Whatsapp:</label><br>
+                        <input type="text" class="numero input" id="numeroInput" name="numero[]" value="+55719" autocomplete="off" maxlength="14" required>
+                        <br><br>
+                    </div>
+                    
+                    <!--Inputs do campo hora e minuto-->
+                    <div class="inputs-hora">
+                        <label for="hora">Hora do envio:</label><br>
+                        <input type="text" class="hora input" id="horaInput" value="19" name="hora[]" min="0" max="23" autocomplete="off" maxlength="2" required>
+                        <input type="text" class="minuto input" id="minutoInput" value="00" name="minuto[]" min="0" max="59" autocomplete="off" maxlength="2" required>
+                        <br><br>
+                    </div>
+                    
+                    <!--Icone de lixeira-->
+                    <div class="icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--Área dos botões de envio e do textArea que consta a mensagem de faltosos-->
+            <div class="btns">
+                <!--textArea da mensagem-->
+                <div class="textArea">
+                    <label style="margin-top: 20px;" for="mensagem">Mensagem:</label><br>
+                    <textarea id="mensagem" name="mensagem" placeholder="Digite ou cole a mensagem"
+                        required>Olá, boa noite. Aqui é da Prepara cursos. Sentimos sua falta na aula de hoje, gostaria de saber o motivo pelo qual você não conseguiu realizar a aula de hoje, aguardo um retorno! 😉</textarea><br><br>
+                </div>
+                <!--BTN de enviar as mensagens-->
+                <div class="btns-send-add">
+                    <button type="button" id="adicionarCampo">ADICIONAR</button><br><br>
+                    <input id="send" type="submit" value="ENVIAR">
+                </div>
+                <!--BTN para importar os números do Excel-->
+                <div class="import">
+                    <input type="file" id="excelFile" accept=".xlsx, .xls">
+                    <button type="button" id="importExcel">IMPORTAR NÚMEROS DO EXCEL</button>
+                    <i id="info" style="font-size: larger;" class="fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Tela de carregamento
+    <div id="loading-screen">
+        <img src="https://i.gifer.com/ZKZg.gif" alt="Loading..." class="loading-gif">
+    </div>
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
